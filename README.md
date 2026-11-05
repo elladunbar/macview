@@ -11,9 +11,6 @@ Existing minimal viewers carry their own toolkit and their own decoders. qView, 
 ships 117 MB of Qt frameworks to show a JPEG. Macview reads and draws with nothing but the
 system: AppKit, CoreGraphics, ImageIO, QuartzCore. Its own code is 250 KB.
 
-The bundle is 1.6 MB, of which 1.3 MB is Sparkle carrying the automatic updates. Nothing in it
-decodes or draws a picture. Sparkle arrives at 3 MB — for both architectures, in 36 languages,
-with its headers — and `scripts/build.sh` keeps only what an arm64 app in two languages needs.
 The icon is 59 KB: the drawing is three flat colours, so it is written on a 64-colour palette
 rather than in full colour, which is the difference between 59 KB and 1.3 MB.
 
@@ -93,11 +90,7 @@ transparent the way macOS expects. Needs Pillow.
 ```
 ./scripts/build.sh                                   # dist/Macview.app
 ./dist/Macview.app/Contents/MacOS/Macview --selftest # fitting, ordering, decoding, animation
-./scripts/release.sh 0.3.0                           # build, sign the update, publish
 ```
-
-The checks run from the built app rather than from `swift run`: the binary links Sparkle out of
-the bundle's own Frameworks directory, and outside the bundle there is nothing to link to.
 
 Requires macOS 14 Sonoma or later — the floor where WebP, AVIF and JPEG XL are all in
 ImageIO, so no format needs a fallback path. Built for arm64; a universal binary needs
@@ -105,12 +98,7 @@ full Xcode rather than the Command Line Tools alone.
 
 ## Updating
 
-Macview looks for a new version once, at launch, and never on a timer; it says nothing unless
-there is one. Check for Updates in the Macview menu asks at any time. The update is carried by
-[Sparkle](https://sparkle-project.org) and signed with an EdDSA key, the same arrangement Nonja,
-Gocci and Konechi use. It costs 3 MB of the bundle, which is most of what the app weighs.
-
-Installed with Homebrew, `brew upgrade` also works.
+This fork has no updater and never goes online: it changes only when it is rebuilt from source.
 
 ## Not included
 

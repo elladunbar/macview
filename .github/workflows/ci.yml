@@ -13,11 +13,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      # build.sh fetches Sparkle into Vendor/ when it is missing. Kept between runs.
-      - uses: actions/cache@v4
-        with:
-          path: Vendor
-          key: ${{ runner.os }}-vendor-${{ hashFiles('scripts/build.sh') }}
       # The rules are in .swift-format: the defaults, with a 4-space indent and 120 columns.
       - run: swift format lint --strict -r Sources
       - run: ./scripts/build.sh

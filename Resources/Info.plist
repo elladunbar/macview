@@ -56,13 +56,5 @@
 	<string>14.0</string>
 	<key>NSHighResolutionCapable</key>
 	<true/>
-	<key>SUAutomaticallyUpdate</key>
-	<false/>
-	<key>SUEnableAutomaticChecks</key>
-	<false/>
-	<key>SUFeedURL</key>
-	<string>https://github.com/piro0919/macview/releases/latest/download/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>qYQq1iewXYNDhhkJJak1nXUXmFkZ0jAF6Gr+pjB4Bxo=</string>
 </dict>
 </plist>
